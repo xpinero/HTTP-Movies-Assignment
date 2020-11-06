@@ -15,6 +15,7 @@ const MovieForm = ({ updateMovie }) => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then((res) => {
+        console.log(res.data)
         setMovie(res.data);
         setTitle(res.data.title);
         setDirector(res.data.director);
@@ -53,7 +54,7 @@ const MovieForm = ({ updateMovie }) => {
         <br />
         <input value={director} onChange={(e) => setDirector(e.target.value)}></input>
         <br />
-        <input value={metascore} onChange={(e) => setMetascore(e.target.value)} type="number"></input>
+        <input value={metascore} onChange={(e) => setMetascore(parseInt(e.target.value))} type="number"></input>
         <br />
         <button>Save</button>
       </form>
